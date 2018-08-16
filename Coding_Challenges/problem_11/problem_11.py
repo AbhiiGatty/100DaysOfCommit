@@ -1,7 +1,7 @@
 # Problem Statememt: https://projecteuler.net/problem=11
 
-
-def greatest_product(grid):
+''' Function to find the largest product in a grid '''
+def largest_product_in_grid(grid):
     adjacent_nums = 4
     grid_size = len(grid)
     max_product = 0
@@ -21,7 +21,7 @@ def greatest_product(grid):
         for j in range(grid_size - adjacent_nums):
             curr_product = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3]
             if curr_product > max_product: max_product = curr_product
-                
+
     for i in range(-1, -1 * (grid_size - adjacent_nums + 1), -1):
         for j in range(grid_size - adjacent_nums): # Diagonal from the bottom left to top right
             curr_product = grid[i][j] * grid[i-1][j+1] * grid[i-2][j+2] * grid[i-3][j+3]
@@ -31,7 +31,7 @@ def greatest_product(grid):
 
 if __name__ == "__main__":
     grid = [ list(map(int,i.split())) for i in open('problem_11_input.txt').read().splitlines() ]
-    answer = greatest_product(grid)
+    answer = largest_product_in_grid(grid)
     print("The greatest product in the grid is: {}".format(answer))
 
 
